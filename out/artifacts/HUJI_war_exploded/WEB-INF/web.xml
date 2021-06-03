@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+<!--    配置相关的filter过滤器-->
+<!--    资源拦截器-->
+    <filter>
+        <filter-name>MyFilter</filter-name>
+        <filter-class>filter.MyFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>MyFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+        <url-pattern>/commons/*</url-pattern>
+        <url-pattern>/user/*</url-pattern>
+    </filter-mapping>
+<!--    事务拦截器-->
+    <filter>
+        <filter-name>TransactionFilter</filter-name>
+        <filter-class>filter.TransactionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TransactionFilter</filter-name>
+<!--        拦截当前工程下的所有请求-->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+<!--配置servlet程序-->
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>web.UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/userServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PersonServlet</servlet-name>
+        <servlet-class>web.PersonServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PersonServlet</servlet-name>
+        <url-pattern>/personServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HouseholdServlet</servlet-name>
+        <servlet-class>web.HouseholdServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HouseholdServlet</servlet-name>
+        <url-pattern>/householdServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NoticeServlet</servlet-name>
+        <servlet-class>web.NoticeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NoticeServlet</servlet-name>
+        <url-pattern>/noticeServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MigrationServlet</servlet-name>
+        <servlet-class>web.MigrationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MigrationServlet</servlet-name>
+        <url-pattern>/migrationServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OpinionServlet</servlet-name>
+        <servlet-class>web.OpinionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OpinionServlet</servlet-name>
+        <url-pattern>/opinionServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CheckPersonServlet</servlet-name>
+        <servlet-class>web.CheckPersonServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckPersonServlet</servlet-name>
+        <url-pattern>/checkPersonServlet</url-pattern>
+    </servlet-mapping>
+
+<!--    配置谷歌验证码用于解决表单的重复提交-->
+    <servlet>
+        <servlet-name>KaptchaServlet</servlet-name>
+        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>KaptchaServlet</servlet-name>
+        <url-pattern>/kaptcha.jpg</url-pattern>
+    </servlet-mapping>
+</web-app>
